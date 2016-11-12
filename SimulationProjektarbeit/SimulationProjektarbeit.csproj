@@ -47,11 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\SimConfig.cs" />
-    <Compile Include="Core\SimParameter.cs" />
+    <Compile Include="Core\Server.cs" />
+    <Compile Include="Core\Umgebung.cs" />
+    <Compile Include="Core\SimulationsSystem.cs" />
+    <Compile Include="Core\Warteschlange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulation.cs" />
+    <Compile Include="Simulations\EinPfadSimulation.cs" />
+    <Compile Include="Simulations\SimulationBase.cs" />
+    <Compile Include="Utility\ThreadSafeRandom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
