@@ -16,13 +16,22 @@ namespace SimulationProjektarbeit
             var umgebung = new Umgebung();
             Console.WriteLine("[Umgebung]");
 
-            Console.Write("Zeitschritt: ");
-            umgebung.Zeitschritt = ParseMoeglicheDivision(Console.ReadLine());
             Console.Write("Anzahl Server: ");
             umgebung.AnzahlServer = ParseInt(Console.ReadLine());
+            Console.Write("Zeitschritt: ");
+            umgebung.Zeitschritt = ParseMoeglicheDivision(Console.ReadLine());
+            Console.Write("Anzahl Zeitschritte: ");
+            umgebung.AnzahlZeitschritte = ParseInt(Console.ReadLine());
+            Console.Write("Anzahl Simulationen (Pfade): ");
+            var pfade = ParseInt(Console.ReadLine());
 
-            var simulation = new EinPfadSimulation(umgebung);
+            SimulationBase simulation;
+            //if (pfade == 1)
+            //    simulation = new EinPfadSimulation(umgebung);
+            //else
+                simulation = new MultiPfadSimulation(umgebung, pfade);
 
+            Console.WriteLine();
             Console.WriteLine("[Warteschlange]");
             var warteschlange = new Warteschlange();
 
@@ -30,6 +39,7 @@ namespace SimulationProjektarbeit
             warteschlange.Erwartungswert = ParseMoeglicheDivision(Console.ReadLine());
             simulation.SetWarteschlange(warteschlange);
 
+            Console.WriteLine();
             Console.WriteLine("[Server]");
             for (int i = 0; i < umgebung.AnzahlServer; i++)
             {

@@ -13,6 +13,12 @@ namespace SimulationProjektarbeit.Simulations
     {
         public EinPfadSimulation(Umgebung umgebung) : base(umgebung) { }
 
+        public EinPfadSimulation(Umgebung umgebung, Warteschlange warteschlange, List<Server> servers) : base(umgebung)
+        {
+            Warteschlange = warteschlange;
+            Servers = servers;
+        }
+
         internal override void CreateExcel()
         {
             // Benutze die EPPlus library um ein Excel zu erstellen
@@ -29,7 +35,7 @@ namespace SimulationProjektarbeit.Simulations
                 }
                 ws.Cells[1, Servers.Count + 3].Value = "Anzahl in Warteschlange";
 
-                var steps = 1000 / Umgebung.Zeitschritt;
+                var steps = Umgebung.AnzahlZeitschritte * Umgebung.Zeitschritt;
                 for (int i = 0; i < steps; i++)
                 {
                     var row = i + 2;

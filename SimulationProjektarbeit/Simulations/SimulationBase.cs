@@ -16,7 +16,7 @@ namespace SimulationProjektarbeit.Simulations
         public Umgebung Umgebung { get; }
 
         protected Warteschlange Warteschlange;
-        protected readonly List<Server> Servers = new List<Server>();
+        protected List<Server> Servers = new List<Server>();
 
         protected SimulationBase(Umgebung umgebung)
         {
@@ -44,7 +44,7 @@ namespace SimulationProjektarbeit.Simulations
             Servers.Add(server);
             Console.Write($" => Wahrscheinlichkeit = {server.Wahrscheinlichkeit:P}\n");
         }
-        
+
         /// <summary>
         /// Dateiname und Pfad erzeugen
         /// </summary>

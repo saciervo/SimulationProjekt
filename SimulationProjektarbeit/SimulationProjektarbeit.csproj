@@ -53,8 +53,10 @@
     <Compile Include="Core\Warteschlange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulations\MultiPfadSimulation.cs" />
     <Compile Include="Simulations\EinPfadSimulation.cs" />
     <Compile Include="Simulations\SimulationBase.cs" />
+    <Compile Include="Simulations\SimulationOhneUmgebung.cs" />
     <Compile Include="Utility\ThreadSafeRandom.cs" />
   </ItemGroup>
   <ItemGroup>
