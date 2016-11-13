@@ -23,8 +23,11 @@ namespace SimulationProjektarbeit.Simulations
                 // Überschriften
                 ws.Cells[1, 1].Value = "Zeitpunkt";
                 ws.Cells[1, 2].Value = "Neu in Warteschlange";
-                ws.Cells[1, 3].Value = "Neu auf Server";
-                ws.Cells[1, 4].Value = "Anzahl in Warteschlange";
+                for (int s = 0; s < Servers.Count; s++)
+                {
+                    ws.Cells[1, s + 3].Value = $"Neu auf {s + 1}. Server";
+                }
+                ws.Cells[1, Servers.Count + 3].Value = "Anzahl in Warteschlange";
 
                 var steps = 1000 / Umgebung.Zeitschritt;
                 for (int i = 0; i < steps; i++)
@@ -32,15 +35,21 @@ namespace SimulationProjektarbeit.Simulations
                     var row = i + 2;
                     ws.Cells[row, 1].Value = (0 + Umgebung.Zeitschritt) * (i + 1);
                     ws.Cells[row, 2].Value = Warteschlange.Step();
-                    ws.Cells[row, 3].Value = Servers[0].Step(Warteschlange);
-                    ws.Cells[row, 4].Value = Warteschlange.AnzahlVideos;
+                    for (int s = 0; s < Servers.Count; s++)
+                    {
+                        ws.Cells[row, s + 3].Value = Servers[s].Step(Warteschlange);
+                    }
+                    ws.Cells[row, Servers.Count + 3].Value = Warteschlange.AnzahlVideos;
                 }
 
                 // Die Spaltengrössen auf den Inhalt anpassen
                 ws.Column(1).AutoFit();
                 ws.Column(2).AutoFit();
-                ws.Column(3).AutoFit();
-                ws.Column(4).AutoFit();
+                for (int s = 0; s < Servers.Count; s++)
+                {
+                    ws.Column(s + 3).AutoFit();
+                }
+                ws.Column(Servers.Count + 3).AutoFit();
 
                 // Dateinamen generieren und Excel an diesem Ort erstellen
                 var excelFile = GetFilePath();

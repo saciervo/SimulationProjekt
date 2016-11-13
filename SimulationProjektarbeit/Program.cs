@@ -18,6 +18,8 @@ namespace SimulationProjektarbeit
 
             Console.Write("Zeitschritt: ");
             umgebung.Zeitschritt = ParseMoeglicheDivision(Console.ReadLine());
+            Console.Write("Anzahl Server: ");
+            umgebung.AnzahlServer = ParseInt(Console.ReadLine());
 
             var simulation = new EinPfadSimulation(umgebung);
 
@@ -29,12 +31,14 @@ namespace SimulationProjektarbeit
             simulation.SetWarteschlange(warteschlange);
 
             Console.WriteLine("[Server]");
-            var server = new Server();
-
-            Console.Write("Erwartungswert: ");
-            server.Erwartungswert = ParseMoeglicheDivision(Console.ReadLine());
-            simulation.AddServer(server);
-
+            for (int i = 0; i < umgebung.AnzahlServer; i++)
+            {
+                var server = new Server();
+                Console.Write($"Erwartungswert {i+1}. Server: ");
+                server.Erwartungswert = ParseMoeglicheDivision(Console.ReadLine());
+                simulation.AddServer(server);
+            }
+            
             simulation.CreateExcel();
         }
 
@@ -44,6 +48,15 @@ namespace SimulationProjektarbeit
             double result;
 
             double.TryParse(input, out result);
+            return result;
+        }
+
+        private static int ParseInt(string input)
+        {
+            // Falls der Wert nicht in ein integer umgewandelt werden kann, wird der default Wert, also 0, zurückgegeben
+            int result;
+
+            int.TryParse(input, out result);
             return result;
         }
 
@@ -61,24 +74,6 @@ namespace SimulationProjektarbeit
             for (int i = 1; i < tokens.Length; i++)
             {
                 result /= ParseDouble(tokens[i]);
-            }
-            return result; 
-        }
-
-        private static double ParseMoeglicheMultiplikation(string input)
-        {
-            // Wenn der Input ein asterisk '*' enthält, ist es eine Multiplikation
-            var tokens = input.Split('*');
-
-            // Ein Token -> Keine Multiplikation
-            if (tokens.Length == 1)
-                return ParseDouble(tokens[0]);
-
-            // Mehrere Tokens -> Alle miteinander multiplizieren
-            var result = ParseDouble(tokens[0]);
-            for (int i = 1; i < tokens.Length; i++)
-            {
-                result *= ParseDouble(tokens[i]);
             }
             return result;
         }

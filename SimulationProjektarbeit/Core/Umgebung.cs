@@ -9,5 +9,6 @@ namespace SimulationProjektarbeit.Core
     internal class Umgebung
     {
         public double Zeitschritt { get; set; }
+        public int AnzahlServer { get; set; }
     }
 }
