@@ -17,13 +17,17 @@ namespace Ruinwahrscheinlichkeit
 
         private static string SimuliereRuinpfade(int anzahlSimulationen, int anfangsKapital = 40, int zielKapital = 80)
         {
+            // Anzahl Kapitalpfade die im Ruin endeten
             var ruinPfade = 0;
+
             for (int i = 0; i < anzahlSimulationen; i++)
             {
+                // Simuliere einen Kapitalpfad
                 var kapital = SimuliereKapitalpfad(anfangsKapital, zielKapital);
+
                 if (kapital <= RuinGrenze)
                 {
-                    // Kapital ist aufgebraucht, die Simulation endete also im Ruin
+                    // Kapital ist aufgebraucht, die Simulation des Kapitalpfads endete also im Ruin
                     ruinPfade++;
                 }
             }
@@ -37,20 +41,26 @@ namespace Ruinwahrscheinlichkeit
 
         public static int SimuliereKapitalpfad(int anfangsKapital, int zielKapital)
         {
+            // Der Spieler gesellt sich an den Roulettetisch. Sein Kapital ist zu diesem Zeitpunkt so hoch wie das Anfangskapital
             var kapital = anfangsKapital;
+
+            // Die Simulation läuft entweder bis der Spieler ruiniert ist, oder er das Zielkapital erreicht hat
             while (kapital > RuinGrenze && kapital < zielKapital)
             {
-                var zufallsZahl = Zufall.NextDouble();
-                if (zufallsZahl >= GewinnWahrscheinlichkeit)
+                // Zufallszahl generieren um die Roulettekugel zu simulieren
+                if (Zufall.NextDouble() >= GewinnWahrscheinlichkeit)
                 {
+                    // Der Spieler verliert seinen Einsatz
                     kapital -= Einsatz;
                 }
                 else
                 {
+                    // Der Spieler erhält seinen Einsatz als Gewinn
                     kapital += Einsatz;
                 }
             }
 
+            // Der Spieler verlässt den Roulettetisch. Rückgabewert ist sein derzeitiges Kapital.
             return kapital;
         }
 
