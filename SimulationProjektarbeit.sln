@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulationProjektarbeit", "SimulationProjektarbeit\SimulationProjektarbeit.csproj", "{FC37B82C-B6A9-484B-BEAC-F6A628943EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruinwahrscheinlichkeit", "Ruinwahrscheinlichkeit\Ruinwahrscheinlichkeit.csproj", "{B48B5B68-7F71-4411-9F8E-5CA6940FBEDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FC37B82C-B6A9-484B-BEAC-F6A628943EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC37B82C-B6A9-484B-BEAC-F6A628943EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC37B82C-B6A9-484B-BEAC-F6A628943EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48B5B68-7F71-4411-9F8E-5CA6940FBEDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48B5B68-7F71-4411-9F8E-5CA6940FBEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48B5B68-7F71-4411-9F8E-5CA6940FBEDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48B5B68-7F71-4411-9F8E-5CA6940FBEDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -41,18 +41,18 @@ namespace SimulationProjektarbeit.Simulations
                     ws.Cells[1, p + 2].Value = p + 1;
                 }
 
-                var steps = Umgebung.AnzahlZeitschritte * Umgebung.Zeitschritt;
-                for (int i = 0; i < steps; i++)
-                {
-                    var row = i + 2; // Neue Zeile
-                    ws.Cells[row, 1].Value = (0 + Umgebung.Zeitschritt) * (i + 1); // Spalte: Aktueller Zeitpunkt
+var steps = Umgebung.AnzahlZeitschritte * Umgebung.Zeitschritt;
+for (int i = 0; i < steps; i++)
+{
+    var row = i + 2; // Neue Zeile
+    ws.Cells[row, 1].Value = (0 + Umgebung.Zeitschritt) * (i + 1); // Spalte: Aktueller Zeitpunkt
                     
-                    for (int p = 0; p < simulations.Count; p++)
-                    {
-                        var simulation = simulations[p];
-                        ws.Cells[row, p + 2].Value = simulation.SimulateOneStep(); // Spalte: Aktueller Pfad
-                    }
-                }
+    for (int p = 0; p < simulations.Count; p++)
+    {
+        var simulation = simulations[p];
+        ws.Cells[row, p + 2].Value = simulation.SimulateOneStep(); // Spalte: Aktueller Pfad
+    }
+}
 
                 // Dateinamen generieren und Excel an diesem Ort erstellen
                 var excelFile = GetFilePath();

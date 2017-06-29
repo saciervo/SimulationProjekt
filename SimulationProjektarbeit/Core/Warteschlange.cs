@@ -6,13 +6,13 @@ namespace SimulationProjektarbeit.Core
     {
         public int Step()
         {
-            // Falls die Zufallszahl höher als die Wahrscheinlichkeit ist gibt es keine Ankunft
-            if (ThreadSafeRandom.Rand() > Wahrscheinlichkeit)
-                return 0;
+// Falls die Zufallszahl höher als die Wahrscheinlichkeit ist gibt es keine Ankunft
+if (ThreadSafeRandom.Rand() > Wahrscheinlichkeit)
+    return 0;
 
-            // Ankunft eines Videos in der Warteschlange
-            AnzahlVideos++;
-            return 1;
+// Ankunft eines Videos in der Warteschlange
+AnzahlVideos++;
+return 1;
         }
     }
 }

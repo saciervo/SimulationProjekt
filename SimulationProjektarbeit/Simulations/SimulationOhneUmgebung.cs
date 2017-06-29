@@ -17,12 +17,12 @@ namespace SimulationProjektarbeit.Simulations
 
         internal int SimulateOneStep()
         {
-            Warteschlange.Step();
-            foreach (var server in Servers)
-            {
-                server.Step(Warteschlange);
-            }
-            return Warteschlange.AnzahlVideos;
+Warteschlange.Step();
+foreach (var server in Servers)
+{
+    server.Step(Warteschlange);
+}
+return Warteschlange.AnzahlVideos;
         }
 
         internal override void CreateExcel()
